@@ -1,107 +1,66 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Auth.css';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
-  const validateEmail = (email) => {
-    return /\S+@\S+\.\S+/.test(email);
-  };
+  const [success, setSuccess] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setSuccess('');
 
-    if (!email.trim()) {
-      setError('Email is required');
+    if (!email) {
+      setError('Please enter your email address');
       return;
     }
 
-    if (!validateEmail(email)) {
+    if (!/\S+@\S+\.\S+/.test(email)) {
       setError('Please enter a valid email address');
       return;
     }
 
-    setIsLoading(true);
-
     try {
-      // Here you would typically make an API call to your backend
-      // await resetPassword(email);
-      
-      // Simulating API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      setIsSubmitted(true);
+      // TODO: Implement actual password reset logic here
+      setSuccess('Password reset instructions have been sent to your email');
+      setEmail('');
     } catch (err) {
-      setError('Failed to send reset link. Please try again.');
-    } finally {
-      setIsLoading(false);
+      setError('Failed to send reset instructions. Please try again.');
     }
   };
 
-  if (isSubmitted) {
-    return (
-      <div className="auth-page">
-        <div className="auth-container">
-          <div className="auth-header">
-            <h1>Check Your Email</h1>
-            <p>We've sent a password reset link to {email}</p>
-          </div>
-          <div className="success-message">
-            <div className="success-icon">✓</div>
-            <p>If you don't see the email, check your spam folder.</p>
-          </div>
-          <div className="auth-footer">
-            <Link to="/login">Back to Login</Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="auth-page">
-      <div className="auth-container">
+    <div className="auth-container">
+      <div className="auth-box">
         <div className="auth-header">
-          <h1>Forgot Password</h1>
-          <p>Enter your email to reset your password</p>
+          <h2>Forgot Password</h2>
+          <p>Enter your email address to reset your password</p>
         </div>
-        <form onSubmit={handleSubmit}>
+
+        <form className="auth-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="email" className="form-label">School Email</label>
+            <label htmlFor="email">Email Address</label>
             <input
-              id="email"
               type="email"
+              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`form-input ${error ? 'error' : ''}`}
-              placeholder="school@example.com"
-              disabled={isLoading}
+              placeholder="Enter your email"
             />
-            {error && (
-              <div className="error-message">
-                {error}
-              </div>
-            )}
+            {error && <div className="error-message">{error}</div>}
+            {success && <div className="success-message">{success}</div>}
           </div>
 
-          <button 
-            type="submit" 
-            className={`auth-button ${isLoading ? 'loading' : ''}`}
-            disabled={isLoading}
-          >
-            {isLoading ? 'Sending...' : 'Send Reset Link'}
+          <button type="submit" className="auth-button">
+            Send Reset Instructions
           </button>
-
-          <div className="auth-footer">
-            Remember your password?{' '}
-            <Link to="/login">Sign in</Link>
-          </div>
         </form>
+
+        <div className="auth-link">
+          Remember your password? <Link to="/login">Back to Login</Link>
+        </div>
       </div>
     </div>
   );

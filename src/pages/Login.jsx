@@ -9,8 +9,7 @@ const Login = () => {
     password: '',
     rememberMe: false
   });
-
-  const [errors, setErrors] = useState({});
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -20,100 +19,70 @@ const Login = () => {
     }));
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
-    
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      // Here you would typically make an API call to authenticate the school
-      console.log('Login submitted:', formData);
+    setError('');
+
+    if (!formData.email || !formData.password) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    try {
+      // TODO: Implement actual login logic here
+      // For now, just simulate a successful login
+      localStorage.setItem('isAuthenticated', 'true');
       navigate('/dashboard');
+    } catch (err) {
+      setError('Invalid email or password');
     }
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-container">
+    <div className="auth-container">
+      <div className="auth-box">
         <div className="auth-header">
-          <h1>School Login</h1>
-          <p>Access your school's dashboard</p>
+          <h2>Welcome Back</h2>
+          <p>Sign in to your account</p>
         </div>
-        <form onSubmit={handleSubmit}>
+
+        <form className="auth-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="email" className="form-label">School Email</label>
+            <label htmlFor="email">Email Address</label>
             <input
+              type="email"
               id="email"
               name="email"
-              type="email"
-              autoComplete="email"
               value={formData.email}
               onChange={handleChange}
-              className={`form-input ${errors.email ? 'border-red-500' : ''}`}
-              placeholder="school@example.com"
+              placeholder="Enter your email"
             />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-            )}
           </div>
 
           <div className="form-group">
-            <label htmlFor="password" className="form-label">Password</label>
+            <label htmlFor="password">Password</label>
             <input
+              type="password"
               id="password"
               name="password"
-              type="password"
-              autoComplete="current-password"
               value={formData.password}
               onChange={handleChange}
-              className={`form-input ${errors.password ? 'border-red-500' : ''}`}
               placeholder="Enter your password"
             />
-            {errors.password && (
-              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
-            )}
           </div>
 
-          <div className="terms-checkbox">
-            <input
-              id="rememberMe"
-              name="rememberMe"
-              type="checkbox"
-              checked={formData.rememberMe}
-              onChange={handleChange}
-            />
-            <label htmlFor="rememberMe">Remember me</label>
-          </div>
-
-          <div className="text-right mb-6">
-            <Link to="/forgot-password" className="forgot-password">
-              Forgot your password?
-            </Link>
-          </div>
+          {error && <div className="error-message">{error}</div>}
 
           <button type="submit" className="auth-button">
-            Sign in
+            Sign In
           </button>
-
-          <div className="auth-footer">
-            Don't have an account?{' '}
-            <Link to="/signup">Register your school</Link>
-          </div>
         </form>
+
+        <div className="auth-link">
+          <Link to="/forgot-password">Forgot your password?</Link>
+          <br />
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </div>
       </div>
     </div>
   );

@@ -1,15 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaUser, FaSignOutAlt } from 'react-icons/fa';
 import './Header.css';
 
 const Header = () => {
+  const navigate = useNavigate();
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    navigate('/login');
+  };
+
   return (
     <header className="header">
       <div className="container">
         <div className="header-content">
-          <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <img src="/BNSLOGO.png" alt="BHARAT NAVODAYA SHIKSHA" style={{ height: '48px' }} />
-            <span style={{ fontWeight: 'bold', fontSize: '1.5rem', color: '#1a202c', letterSpacing: '1px' }}>BHARAT NAVODAYA SHIKSHA</span>
+          <Link to="/" className="logo">
+            <img src="/BNSLOGO.png" alt="BHARAT NAVODAYA SHIKSHA" />
+            <span>BHARAT NAVODAYA SHIKSHA</span>
           </Link>
           
           <nav className="main-nav">
@@ -20,9 +30,35 @@ const Header = () => {
             </ul>
           </nav>
 
-          <div className="header-actions flex gap-2">
-            <Link to="/login" className="btn btn-primary">Login</Link>
-            <Link to="/signup" className="btn btn-secondary">Register</Link>
+          <div className="header-actions">
+            {isAuthenticated ? (
+              <div className="profile-menu">
+                <button 
+                  className="profile-button"
+                  onClick={() => setShowProfileMenu(!showProfileMenu)}
+                >
+                  <FaUser />
+                  <span>Profile</span>
+                </button>
+                {showProfileMenu && (
+                  <div className="profile-dropdown">
+                    <Link to="/dashboard" className="dropdown-item">
+                      <FaUser />
+                      <span>Dashboard</span>
+                    </Link>
+                    <button onClick={handleLogout} className="dropdown-item">
+                      <FaSignOutAlt />
+                      <span>Logout</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <>
+                <Link to="/login" className="btn btn-primary">Login</Link>
+                <Link to="/signup" className="btn btn-secondary">Register</Link>
+              </>
+            )}
           </div>
         </div>
       </div>
