@@ -132,7 +132,7 @@
 }
 
 .newsletter-form button:hover {
-  background: var(--primary-color-dark);
+  /* background: var(--primary-color-dark); */
   transform: translateY(-1px);
 }
 
