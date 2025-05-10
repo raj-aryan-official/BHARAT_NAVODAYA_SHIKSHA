@@ -132,7 +132,7 @@ h2 {
   line-height: 1.6;
 }
 
-/* Popular Courses Section */
+/* Popular Courses / Subscription Plans Section */
 .popular-courses {
   background: #f8f9fa;
   padding: 6rem 2rem;
@@ -153,6 +153,7 @@ h2 {
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid #e9ecef;
+  position: relative;
 }
 
 .course-card:hover {
@@ -410,6 +411,34 @@ h2 {
 
 .dark-mode .course-card::after {
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+}
+
+/* Dark Mode - Enhanced for Subscription Section */
+.dark-mode .popular-courses {
+  background: #1a1a1a;
+}
+
+.dark-mode .btn-outline {
+  color: #60a5fa;
+  border-color: #60a5fa;
+}
+
+.dark-mode .btn-outline:hover {
+  background: #60a5fa;
+  color: #1a1a1a;
+}
+
+.dark-mode .course-content {
+  background: #2d2d2d;
+}
+
+.dark-mode .courses-cta .btn-primary {
+  background: #4a90e2;
+  color: white;
+}
+
+.dark-mode .courses-cta .btn-primary:hover {
+  background: #60a5fa;
 }
 
 /* Responsive Design */

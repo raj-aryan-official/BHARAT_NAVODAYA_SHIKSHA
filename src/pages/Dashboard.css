@@ -162,6 +162,40 @@
   color: #3b82f6;
 }
 
+/* Action buttons */
+.action-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: #1a202c;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.action-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--action-color, #3b82f6);
+  color: white;
+}
+
 /* Meeting Section */
 .meeting-section {
   background: white;
@@ -282,105 +316,238 @@
   }
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  .dashboard-container {
-    background-color: #1a202c;
-  }
+/* Dark Mode Support - using .dark-mode class */
+.dark-mode .dashboard-container {
+  background-color: #1a202c;
+}
 
-  .dashboard-header h1 {
-    color: #f8fafc;
-  }
+.dark-mode .dashboard-header h1 {
+  color: #f8fafc;
+}
 
-  .dashboard-header p {
-    color: #94a3b8;
-  }
+.dark-mode .dashboard-header p {
+  color: #94a3b8;
+}
 
-  .stat-card {
-    background: #2d3748;
-  }
+.dark-mode .stat-card {
+  background: #2d3748;
+}
 
-  .stat-card h3 {
-    color: #94a3b8;
-  }
+.dark-mode .stat-card h3 {
+  color: #94a3b8;
+}
 
-  .stat-card .value {
-    color: #f8fafc;
-  }
+.dark-mode .stat-card .value {
+  color: #f8fafc;
+}
 
-  .recent-activity {
-    background: #2d3748;
-  }
+.dark-mode .recent-activity {
+  background: #2d3748;
+}
 
-  .recent-activity h2 {
-    color: #f8fafc;
-  }
+.dark-mode .recent-activity h2 {
+  color: #f8fafc;
+}
 
-  .activity-item {
-    background: #1a202c;
-  }
+.dark-mode .activity-item {
+  background: #1a202c;
+}
 
-  .activity-icon {
-    background: #2d3748;
-    color: #f8fafc;
-  }
+.dark-mode .activity-icon {
+  background: #2d3748;
+  color: #f8fafc;
+}
 
-  .activity-details h4 {
-    color: #f8fafc;
-  }
+.dark-mode .activity-details h4 {
+  color: #f8fafc;
+}
 
-  .action-button {
-    background: #2d3748;
-    border-color: #4a5568;
-    color: #f8fafc;
-  }
+.dark-mode .activity-details p {
+  color: #94a3b8;
+}
 
-  .action-button:hover {
-    background: #1a202c;
-    border-color: #2d3748;
-  }
+.dark-mode .action-button {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #f8fafc;
+}
 
-  .meeting-section {
-    background: #2d3748;
-  }
+.dark-mode .action-button:hover {
+  background: #1a202c;
+  border-color: #2d3748;
+}
 
-  .meeting-section h2 {
-    color: #f8fafc;
-  }
+.dark-mode .action-card {
+  background: #2d3748;
+  color: #f8fafc;
+  border-color: #4a5568;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
 
-  .meeting-item {
-    background: #1a202c;
-  }
+.dark-mode .action-card:hover {
+  background: #1a202c;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
 
-  .meeting-icon {
-    background: #2d3748;
-    color: #f8fafc;
-  }
+.dark-mode .meeting-section {
+  background: #2d3748;
+}
 
-  .meeting-details h4 {
-    color: #f8fafc;
-  }
+.dark-mode .meeting-section h2 {
+  color: #f8fafc;
+}
 
-  .meeting-details p {
-    color: #94a3b8;
-  }
+.dark-mode .meeting-item {
+  background: #1a202c;
+}
 
-  .meeting-meta {
-    color: #94a3b8;
-  }
+.dark-mode .meeting-icon {
+  background: #2d3748;
+  color: #f8fafc;
+}
 
-  .meeting-status.upcoming {
-    background: #064e3b;
-    color: #34d399;
-  }
+.dark-mode .meeting-details h4 {
+  color: #f8fafc;
+}
 
-  .meeting-status.completed {
-    background: #374151;
-    color: #9ca3af;
-  }
+.dark-mode .meeting-details p {
+  color: #94a3b8;
+}
 
-  .meeting-status.ongoing {
-    background: #1e40af;
-    color: #60a5fa;
-  }
-} 
+.dark-mode .meeting-meta {
+  color: #94a3b8;
+}
+
+.dark-mode .meeting-status.upcoming {
+  background: #064e3b;
+  color: #34d399;
+}
+
+.dark-mode .meeting-status.completed {
+  background: #374151;
+  color: #9ca3af;
+}
+
+.dark-mode .meeting-status.ongoing {
+  background: #1e40af;
+  color: #60a5fa;
+}
+
+/* Support for dark class for Tailwind CSS */
+.dark .dashboard-container {
+  background-color: #1a202c;
+}
+
+.dark .dashboard-header h1 {
+  color: #f8fafc;
+}
+
+.dark .dashboard-header p {
+  color: #94a3b8;
+}
+
+.dark .stat-card {
+  background: #2d3748;
+}
+
+.dark .stat-card h3 {
+  color: #94a3b8;
+}
+
+.dark .stat-card .value {
+  color: #f8fafc;
+}
+
+.dark .recent-activity {
+  background: #2d3748;
+}
+
+.dark .recent-activity h2 {
+  color: #f8fafc;
+}
+
+.dark .activity-item {
+  background: #1a202c;
+}
+
+.dark .activity-icon {
+  background: #2d3748;
+  color: #f8fafc;
+}
+
+.dark .activity-details h4 {
+  color: #f8fafc;
+}
+
+.dark .activity-details p {
+  color: #94a3b8;
+}
+
+.dark .action-button {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #f8fafc;
+}
+
+.dark .action-button:hover {
+  background: #1a202c;
+  border-color: #2d3748;
+}
+
+.dark .action-card {
+  background: #2d3748;
+  color: #f8fafc;
+  border-color: #4a5568;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.dark .action-card:hover {
+  background: #1a202c;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark .meeting-section {
+  background: #2d3748;
+}
+
+.dark .meeting-section h2 {
+  color: #f8fafc;
+}
+
+.dark .meeting-item {
+  background: #1a202c;
+}
+
+.dark .meeting-icon {
+  background: #2d3748;
+  color: #f8fafc;
+}
+
+.dark .meeting-details h4 {
+  color: #f8fafc;
+}
+
+.dark .meeting-details p {
+  color: #94a3b8;
+}
+
+.dark .meeting-meta {
+  color: #94a3b8;
+}
+
+.dark .meeting-status.upcoming {
+  background: #064e3b;
+  color: #34d399;
+}
+
+.dark .meeting-status.completed {
+  background: #374151;
+  color: #9ca3af;
+}
+
+.dark .meeting-status.ongoing {
+  background: #1e40af;
+  color: #60a5fa;
+}

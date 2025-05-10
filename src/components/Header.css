@@ -159,60 +159,115 @@
 }
 
 /* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  .header {
-    background: #1a202c;
-  }
+.dark-mode .header {
+  background: #1a202c;
+}
 
-  .logo span {
-    color: #f8fafc;
-  }
+.dark-mode .logo span {
+  color: #f8fafc;
+}
 
-  .main-nav a {
-    color: #a0aec0;
-  }
+.dark-mode .main-nav a {
+  color: #a0aec0;
+}
 
-  .main-nav a:hover {
-    color: #63b3ed;
-  }
+.dark-mode .main-nav a:hover {
+  color: #63b3ed;
+}
 
-  .btn-secondary {
-    background: #1a202c;
-    color: #63b3ed;
-    border-color: #63b3ed;
-  }
+.dark-mode .btn-secondary {
+  background: #1a202c;
+  color: #63b3ed;
+  border-color: #63b3ed;
+}
 
-  .btn-secondary:hover {
-    background: #2d3748;
-  }
+.dark-mode .btn-secondary:hover {
+  background: #2d3748;
+  color: white;
+}
 
-  .profile-button {
-    background: #1a202c;
-    border-color: #4a5568;
-    color: #a0aec0;
-  }
+.dark-mode .profile-button {
+  background: #1a202c;
+  border-color: #4a5568;
+  color: #a0aec0;
+}
 
-  .profile-button:hover {
-    background: #2d3748;
-    border-color: #718096;
-  }
+.dark-mode .profile-button:hover {
+  background: #2d3748;
+  border-color: #718096;
+}
 
-  .profile-dropdown {
-    background: #1a202c;
-    border-color: #4a5568;
-  }
+.dark-mode .profile-dropdown {
+  background: #1a202c;
+  border-color: #4a5568;
+}
 
-  .dropdown-item {
-    color: #a0aec0;
-  }
+.dark-mode .dropdown-item {
+  color: #a0aec0;
+}
 
-  .dropdown-item:hover {
-    background: #2d3748;
-  }
+.dark-mode .dropdown-item:hover {
+  background: #2d3748;
+}
 
-  .dropdown-item svg {
-    color: #718096;
-  }
+.dark-mode .dropdown-item svg {
+  color: #718096;
+}
+
+/* Support for dark class added by Tailwind CSS */
+.dark .header {
+  background: #1a202c;
+}
+
+.dark .logo span {
+  color: #f8fafc;
+}
+
+.dark .main-nav a {
+  color: #a0aec0;
+}
+
+.dark .main-nav a:hover {
+  color: #63b3ed;
+}
+
+.dark .btn-secondary {
+  background: #1a202c;
+  color: #63b3ed;
+  border-color: #63b3ed;
+}
+
+.dark .btn-secondary:hover {
+  background: #2d3748;
+  color: white;
+}
+
+.dark .profile-button {
+  background: #1a202c;
+  border-color: #4a5568;
+  color: #a0aec0;
+}
+
+.dark .profile-button:hover {
+  background: #2d3748;
+  border-color: #718096;
+}
+
+.dark .profile-dropdown {
+  background: #1a202c;
+  border-color: #4a5568;
+}
+
+.dark .dropdown-item {
+  color: #a0aec0;
+}
+
+.dark .dropdown-item:hover {
+  background: #2d3748;
+}
+
+.dark .dropdown-item svg {
+  color: #718096;
 }
 
 /* Responsive design */

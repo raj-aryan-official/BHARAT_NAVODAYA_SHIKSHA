@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaSearch, FaFilter, FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 import './Auth.css';
+import './ViewStudent.css';
 
 const ViewStudent = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -53,50 +54,34 @@ const ViewStudent = () => {
   });
 
   return (
-    <div className="auth-container">
+    <div className="auth-container students-container">
       <div className="auth-box" style={{ maxWidth: '1200px' }}>
         <div className="auth-header">
           <h2>View Students</h2>
           <p>Search and filter student records</p>
         </div>
 
-        <div className="search-filter-container" style={{ marginBottom: '2rem' }}>
-          <div className="search-box" style={{ 
-            display: 'flex', 
-            gap: '1rem', 
-            marginBottom: '1rem' 
-          }}>
-            <div className="form-group" style={{ flex: 1 }}>
-              <div style={{ position: 'relative' }}>
-                <input
-                  type="text"
-                  placeholder="Search by name or roll number"
-                  value={searchTerm}
-                  onChange={handleSearch}
-                  style={{ paddingLeft: '2.5rem' }}
-                />
-                <FaSearch style={{ 
-                  position: 'absolute', 
-                  left: '1rem', 
-                  top: '50%', 
-                  transform: 'translateY(-50%)',
-                  color: '#6b7280'
-                }} />
-              </div>
+        <div className="search-filter-container">
+          <div className="search-box">
+            <div className="form-group search-input-container">
+              <input
+                type="text"
+                placeholder="Search by name or roll number"
+                value={searchTerm}
+                onChange={handleSearch}
+                className="search-input"
+              />
+              <FaSearch className="search-icon" />
             </div>
           </div>
 
-          <div className="filters" style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(3, 1fr)', 
-            gap: '1rem' 
-          }}>
+          <div className="filters-grid">
             <div className="form-group">
               <label>Class</label>
               <select name="class" value={filters.class} onChange={handleFilterChange}>
                 <option value="">All Classes</option>
                 {[...Array(12)].map((_, i) => (
-                  <option key={i + 1} value={i + 1}>Class {i + 1}</option>
+                  <option key={i + 1} value={(i + 1).toString()}>Class {i + 1}</option>
                 ))}
               </select>
             </div>
@@ -124,44 +109,33 @@ const ViewStudent = () => {
           </div>
         </div>
 
-        <div className="students-table" style={{ 
-          backgroundColor: 'white',
-          borderRadius: '0.5rem',
-          boxShadow: 'var(--shadow-md)',
-          overflow: 'hidden'
-        }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <div className="students-table-container">
+          <table className="students-table">
             <thead>
-              <tr style={{ 
-                backgroundColor: '#f3f4f6',
-                borderBottom: '2px solid var(--border-color)'
-              }}>
-                <th style={{ padding: '1rem', textAlign: 'left' }}>Roll No.</th>
-                <th style={{ padding: '1rem', textAlign: 'left' }}>Name</th>
-                <th style={{ padding: '1rem', textAlign: 'left' }}>Class</th>
-                <th style={{ padding: '1rem', textAlign: 'left' }}>Section</th>
-                <th style={{ padding: '1rem', textAlign: 'left' }}>Gender</th>
-                <th style={{ padding: '1rem', textAlign: 'left' }}>Contact</th>
-                <th style={{ padding: '1rem', textAlign: 'left' }}>Actions</th>
+              <tr>
+                <th>Roll No.</th>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Section</th>
+                <th>Gender</th>
+                <th>Contact</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredStudents.map(student => (
-                <tr key={student.id} style={{ 
-                  borderBottom: '1px solid var(--border-color)',
-                  transition: 'var(--transition-base)'
-                }}>
-                  <td style={{ padding: '1rem' }}>{student.rollNumber}</td>
-                  <td style={{ padding: '1rem' }}>{`${student.firstName} ${student.lastName}`}</td>
-                  <td style={{ padding: '1rem' }}>{student.class}</td>
-                  <td style={{ padding: '1rem' }}>{student.section}</td>
-                  <td style={{ padding: '1rem' }}>{student.gender}</td>
-                  <td style={{ padding: '1rem' }}>
-                    <div>{student.email}</div>
-                    <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>{student.phone}</div>
+                <tr key={student.id}>
+                  <td>{student.rollNumber}</td>
+                  <td>{`${student.firstName} ${student.lastName}`}</td>
+                  <td>{student.class}</td>
+                  <td>{student.section}</td>
+                  <td>{student.gender}</td>
+                  <td>
+                    <div className="student-email">{student.email}</div>
+                    <div className="student-phone">{student.phone}</div>
                   </td>
-                  <td style={{ padding: '1rem' }}>
-                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <td>
+                    <div className="table-actions">
                       <button className="auth-button" style={{ 
                         padding: '0.5rem',
                         backgroundColor: '#3b82f6'
@@ -189,11 +163,7 @@ const ViewStudent = () => {
         </div>
 
         {filteredStudents.length === 0 && (
-          <div style={{ 
-            textAlign: 'center', 
-            padding: '2rem',
-            color: '#6b7280'
-          }}>
+          <div className="no-results">
             No students found matching your search criteria
           </div>
         )}
@@ -202,4 +172,4 @@ const ViewStudent = () => {
   );
 };
 
-export default ViewStudent; 
+export default ViewStudent;

@@ -19,6 +19,7 @@ import AddStudent from './pages/AddStudent'
 import ViewStudent from './pages/ViewStudent'
 import ScheduleMeeting from './pages/ScheduleMeeting'
 import ViewReport from './pages/ViewReport'
+import { useDarkMode } from './context/DarkModeContext'
 import './App.css'
 
 // Protected Route Component
@@ -29,7 +30,7 @@ const ProtectedRoute = ({ children }) => {
 
 function App() {
   const [language, setLanguage] = useState('en')
-  const [darkMode, setDarkMode] = useState(false)
+  const { darkMode } = useDarkMode();
 
   return (
     <>
@@ -38,8 +39,6 @@ function App() {
         <Header 
           language={language} 
           setLanguage={setLanguage}
-          darkMode={darkMode}
-          setDarkMode={setDarkMode}
         />
         <main>
           <Routes>

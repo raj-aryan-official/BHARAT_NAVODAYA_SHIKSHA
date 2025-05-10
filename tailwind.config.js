@@ -3,12 +3,21 @@ export default {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
+  darkMode: 'class', // Enable dark mode with class strategy
   theme: {
     extend: {
       colors: {
         primary: '#2b2d42',
         secondary: '#ef233c',
         accent: '#8d99ae',
+        // Dark mode colors
+        dark: {
+          bg: '#121212',
+          surface: '#1e1e1e',
+          text: '#e5e7eb',
+          muted: '#9ca3af',
+          border: '#374151',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
@@ -34,4 +43,4 @@ export default {
     },
   },
   plugins: [],
-} 
+}

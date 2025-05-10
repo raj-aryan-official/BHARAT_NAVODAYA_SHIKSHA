@@ -1,0 +1,146 @@
+/* ViewStudent.css */
+.students-container {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+}
+
+.search-filter-container {
+  margin-bottom: 2rem;
+}
+
+.search-box {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-input-container {
+  position: relative;
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding-left: 2.5rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.students-table-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.students-table thead tr {
+  background-color: #f3f4f6;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.students-table th {
+  padding: 1rem;
+  text-align: left;
+}
+
+.students-table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition-base);
+}
+
+.students-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.students-table td {
+  padding: 1rem;
+}
+
+.student-email {
+  margin-bottom: 0.25rem;
+}
+
+.student-phone {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+}
+
+/* Dark mode styles */
+.dark-mode .students-container,
+.dark .students-container {
+  background-color: var(--bg-dark);
+}
+
+.dark-mode .search-icon,
+.dark .search-icon {
+  color: #9ca3af;
+}
+
+.dark-mode .students-table-container,
+.dark .students-table-container {
+  background-color: var(--bg-dark-secondary);
+}
+
+.dark-mode .students-table thead tr,
+.dark .students-table thead tr {
+  background-color: var(--bg-dark);
+  border-color: var(--border-color-dark);
+}
+
+.dark-mode .students-table th,
+.dark .students-table th {
+  color: var(--text-dark);
+}
+
+.dark-mode .students-table tbody tr,
+.dark .students-table tbody tr {
+  border-color: var(--border-color-dark);
+}
+
+.dark-mode .students-table tbody tr:hover,
+.dark .students-table tbody tr:hover {
+  background-color: var(--bg-dark);
+}
+
+.dark-mode .students-table td,
+.dark .students-table td {
+  color: var(--text-dark);
+}
+
+.dark-mode .student-phone,
+.dark .student-phone {
+  color: #9ca3af;
+}
+
+.dark-mode .no-results,
+.dark .no-results {
+  color: #9ca3af;
+}

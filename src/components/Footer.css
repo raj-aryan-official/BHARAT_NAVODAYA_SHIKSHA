@@ -184,10 +184,50 @@
   background: var(--bg-dark-secondary);
 }
 
+.dark-mode .newsletter h4 {
+  color: var(--text-dark);
+}
+
 .dark-mode .newsletter-form input {
   background: var(--bg-dark);
   border-color: var(--border-color-dark);
   color: var(--text-dark);
+}
+
+.dark-mode .newsletter-form input::placeholder {
+  color: #6b7280;
+}
+
+/* Support for dark class for Tailwind CSS */
+.dark .footer {
+  background: var(--bg-dark);
+  border-color: var(--border-color-dark);
+}
+
+.dark .footer-section h3,
+.dark .footer-links a,
+.dark .footer-bottom p,
+.dark .footer-bottom-links a {
+  color: var(--text-dark);
+}
+
+.dark .social-link,
+.dark .newsletter {
+  background: var(--bg-dark-secondary);
+}
+
+.dark .newsletter h4 {
+  color: var(--text-dark);
+}
+
+.dark .newsletter-form input {
+  background: var(--bg-dark);
+  border-color: var(--border-color-dark);
+  color: var(--text-dark);
+}
+
+.dark .newsletter-form input::placeholder {
+  color: #6b7280;
 }
 
 /* Responsive Design */

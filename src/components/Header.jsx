@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaSignOutAlt } from 'react-icons/fa';
+import DarkModeToggle from './DarkModeToggle';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ language, setLanguage }) => {
   const navigate = useNavigate();
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
@@ -31,6 +32,7 @@ const Header = () => {
           </nav>
 
           <div className="header-actions">
+            <DarkModeToggle />
             {isAuthenticated ? (
               <div className="profile-menu">
                 <button 
@@ -66,4 +68,4 @@ const Header = () => {
   );
 };
 
-export default Header; 
+export default Header;

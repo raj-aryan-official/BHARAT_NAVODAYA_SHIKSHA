@@ -137,9 +137,18 @@ a:hover {
   background: var(--background-dark);
 }
 
+.dark-mode a {
+  color: var(--primary-color-light);
+}
+
+.dark-mode a:hover {
+  color: var(--primary-light);
+}
+
 .dark-mode .card {
-  background: #01142e;
+  background: var(--bg-dark-secondary);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color-dark);
 }
 
 .dark-mode .form-label {
@@ -147,14 +156,27 @@ a:hover {
 }
 
 .dark-mode .form-input {
-  background: #374151;
-  border-color: #4b5563;
+  background: var(--bg-dark-secondary);
+  border-color: var(--border-color-dark);
   color: var(--text-dark);
 }
 
 .dark-mode .form-input:focus {
-  border-color: #60a5fa;
+  border-color: var(--primary-color-light);
   box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+.dark-mode .btn-primary {
+  background: var(--primary-color);
+}
+
+.dark-mode .btn-secondary {
+  color: var(--primary-color-light);
+  border-color: var(--primary-color-light);
+}
+
+.dark-mode .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* Animations */
